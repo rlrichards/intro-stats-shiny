@@ -33,15 +33,7 @@ ui <- fluidPage(
                     "Sample size:", 
                     value = 30,
                     min = 2,
-                    max = 500),
-        br(),
-        
-        # Number of samples ----
-        sliderInput("k",
-                    "Number of samples:",
-                    value = 200,
-                    min = 10,
-                    max = 1000)
+                    max = 500)
       ),
       
       # Informational text ---- 
@@ -208,7 +200,7 @@ server <- function(input, output, session) {
     
     pop = parent()
     n = input$n
-    k = input$k
+    k = 500
     
     return(replicate(k, sample(pop, n, replace=TRUE)))
   })
@@ -336,7 +328,7 @@ server <- function(input, output, session) {
                       runif = "uniform population")
 
     n = input$n
-    k = input$k
+    k = 500
 
     pop = parent()
 
@@ -393,7 +385,7 @@ server <- function(input, output, session) {
                       rbeta = "left skewed population",
                       runif = "uniform population")
 
-    k = input$k
+    k = 500
     n = input$n
     paste("*Distribution of means of", k, "random samples,
           each consisting of", n, " observations
